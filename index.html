@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Discovery Form</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4 sm:p-6">
+
+    <div class="w-full max-w-3xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-lg">
+        <form id="discovery-form">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">Start a New Project</h1>
+                <p class="text-gray-500 mt-2">Let's create something amazing together. Fill out the form below to get started.</p>
+            </div>
+
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-700 border-b pb-2 mb-6">Contact Information</h2>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="FullName" class="block mb-2 text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="FullName" name="FullName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" required>
+                        </div>
+                        <div>
+                            <label for="Email" class="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="Email" name="Email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" required>
+                        </div>
+                         <div>
+                            <label for="CompanyName" class="block mb-2 text-sm font-medium text-gray-700">Company Name</label>
+                            <input type="text" id="CompanyName" name="CompanyName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3">
+                        </div>
+                        <div>
+                            <label for="PhoneNumber" class="block mb-2 text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="tel" id="PhoneNumber" name="PhoneNumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-700 border-b pb-2 mb-6">About Your Project</h2>
+                    <div>
+                        <label for="ProjectDescription" class="block mb-2 text-sm font-medium text-gray-700">Briefly describe your project and its main goals</label>
+                        <textarea id="ProjectDescription" name="ProjectDescription" rows="5" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., I need a modern e-commerce website to sell handmade crafts..." required></textarea>
+                    </div>
+                     <div class="mt-6">
+                        <label for="Budget" class="block mb-2 text-sm font-medium text-gray-700">Estimated Budget (INR)</label>
+                        <select id="Budget" name="Budget" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3">
+                            <option selected disabled>Select a budget range...</option>
+                            <option value="< ₹1,00,000">< ₹1,00,000</option>
+                            <option value="₹1,00,000 - ₹3,00,000">₹1,00,000 - ₹3,00,000</option>
+                            <option value="₹3,00,000 - ₹5,00,000">₹3,00,000 - ₹5,00,000</option>
+                            <option value="> ₹5,00,000">> ₹5,00,000</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <button type="submit" id="submit-button" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-3 text-center transition-colors duration-300 disabled:bg-blue-400">Submit Project Inquiry</button>
+            </div>
+            
+            <p id="status-message" class="mt-4 text-center text-sm font-medium"></p>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('discovery-form');
+        const statusMessage = document.getElementById('status-message');
+        const submitButton = document.getElementById('submit-button');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the form from submitting the traditional way
+            
+            // ⚠️ IMPORTANT: Paste your Web App URL here
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx6sA8F7VG0mZHtGHuY3fjiq8_tUVrH9OggMFQjzf_LLWjEYSgmFfifmHuSazW1ghuF/exec';
+            const formData = new FormData(form);
+
+            // Disable button and show submitting text
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            statusMessage.textContent = '';
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        statusMessage.textContent = '✅ Thank you! Your submission was successful. I will be in touch shortly.';
+                        statusMessage.className = 'mt-4 text-center text-sm font-medium text-green-600';
+                        form.reset(); // Clear the form fields
+                    } else {
+                        throw new Error(data.error || 'An unknown error occurred.');
+                    }
+                })
+                .catch(error => {
+                    statusMessage.textContent = '❌ Error! Something went wrong. Please try again.';
+                    statusMessage.className = 'mt-4 text-center text-sm font-medium text-red-600';
+                    console.error('Error!', error.message);
+                })
+                .finally(() => {
+                    // Re-enable the button after 2 seconds
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit Project Inquiry';
+                    }, 2000);
+                });
+        });
+    </script>
+</body>
+</html>
