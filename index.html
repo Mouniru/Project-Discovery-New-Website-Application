@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Discovery Form</title>
+    <title>Start a New Project</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -15,19 +15,40 @@
     </style>
 </head>
 
-<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4 sm:p-6">
+<body class="bg-gradient-to-br from-gray-50 to-blue-100 flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
 
-    <div class="w-full max-w-3xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-lg">
-        <form id="discovery-form">
-            <div class="text-center mb-10">
-                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">Start a New Project</h1>
-                <p class="text-gray-500 mt-2">Let's create something amazing together. Fill out the form below to get started.</p>
+    <div class="w-full max-w-5xl mx-auto grid lg:grid-cols-2 bg-white rounded-2xl shadow-xl overflow-hidden">
+        
+        <div class="bg-blue-600 text-white p-8 sm:p-12 hidden lg:flex flex-col justify-center">
+            <h1 class="text-4xl font-bold mb-4">Let's Build Your Vision.</h1>
+            <p class="text-blue-200 mb-8">
+                Your project deserves the best. By providing a few details, you help me understand your goals so we can create something truly exceptional together.
+            </p>
+            <div class="border-t border-blue-500 pt-6">
+                <h3 class="text-lg font-semibold mb-3">What to Expect:</h3>
+                <ul class="space-y-3 text-blue-200">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>A prompt and personal reply within 24 hours.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>A collaborative process focused on your goals.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mr-3 mt-1 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span>High-quality results using modern technology.</span>
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <div class="space-y-8">
-                <div>
-                    <h2 class="text-lg font-semibold text-gray-700 border-b pb-2 mb-6">Contact Information</h2>
-                    <div class="grid sm:grid-cols-2 gap-6">
+        <div class="p-8 sm:p-12">
+            <form id="discovery-form">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Tell Me About Your Project</h2>
+                
+                <div class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-5">
                         <div>
                             <label for="FullName" class="block mb-2 text-sm font-medium text-gray-700">Full Name</label>
                             <input type="text" id="FullName" name="FullName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" required>
@@ -36,42 +57,43 @@
                             <label for="Email" class="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
                             <input type="email" id="Email" name="Email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3" required>
                         </div>
-                         <div>
-                            <label for="CompanyName" class="block mb-2 text-sm font-medium text-gray-700">Company Name</label>
-                            <input type="text" id="CompanyName" name="CompanyName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3">
-                        </div>
-                        <div>
-                            <label for="PhoneNumber" class="block mb-2 text-sm font-medium text-gray-700">Phone Number</label>
-                            <input type="tel" id="PhoneNumber" name="PhoneNumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3">
-                        </div>
                     </div>
-                </div>
-
-                <div>
-                    <h2 class="text-lg font-semibold text-gray-700 border-b pb-2 mb-6">About Your Project</h2>
+                    
                     <div>
-                        <label for="ProjectDescription" class="block mb-2 text-sm font-medium text-gray-700">Briefly describe your project and its main goals</label>
-                        <textarea id="ProjectDescription" name="ProjectDescription" rows="5" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., I need a modern e-commerce website to sell handmade crafts..." required></textarea>
+                        <label for="ProjectDescription" class="block mb-2 text-sm font-medium text-gray-700">Project Goals & Description</label>
+                        <textarea id="ProjectDescription" name="ProjectDescription" rows="5" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="What are your goals? Who is your target audience? Any specific features in mind?" required></textarea>
                     </div>
-                     <div class="mt-6">
-                        <label for="Budget" class="block mb-2 text-sm font-medium text-gray-700">Estimated Budget (INR)</label>
+                    
+                    <div>
+                        <label for="Budget" class="block mb-2 text-sm font-medium text-gray-700">Estimated Budget (USD)</label>
                         <select id="Budget" name="Budget" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3">
                             <option selected disabled>Select a budget range...</option>
-                            <option value="< ₹1,00,000">< ₹1,00,000</option>
-                            <option value="₹1,00,000 - ₹3,00,000">₹1,00,000 - ₹3,00,000</option>
-                            <option value="₹3,00,000 - ₹5,00,000">₹3,00,000 - ₹5,00,000</option>
-                            <option value="> ₹5,00,000">> ₹5,00,000</option>
+                            <option value="< $500">< $500</option>
+                            <option value="$500 - $1,500">$500 - $1,500</option>
+                            <option value="$1,500 - $3,000">$1,500 - $3,000</option>
+                            <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+                            <option value="> $5,000">> $5,000</option>
                         </select>
                     </div>
+
+                    <div>
+                        <button type="submit" id="submit-button" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-3 text-center transition-colors duration-300 disabled:bg-blue-400">Send Project Details</button>
+                        <p id="status-message" class="mt-4 text-center text-sm font-medium"></p>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-8 pt-6 border-t text-center">
+                <p class="text-gray-600 text-sm mb-3">Prefer a direct conversation?</p>
+                <a href="[YOUR_CALENDLY_LINK_HERE]" target="_blank" class="inline-block text-blue-600 font-semibold hover:underline">
+                    Book a Free 30-Minute Discovery Call
+                </a>
+                <div class="flex items-center justify-center mt-6 text-xs text-gray-500">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <span>Your information is confidential and will only be used to contact you about your project.</span>
                 </div>
             </div>
-
-            <div class="mt-10">
-                <button type="submit" id="submit-button" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-3 text-center transition-colors duration-300 disabled:bg-blue-400">Submit Project Inquiry</button>
-            </div>
-            
-            <p id="status-message" class="mt-4 text-center text-sm font-medium"></p>
-        </form>
+        </div>
     </div>
 
     <script>
@@ -80,38 +102,31 @@
         const submitButton = document.getElementById('submit-button');
         
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the form from submitting the traditional way
-            
-            // ⚠️ IMPORTANT: Paste your Web App URL here
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbw9h5Sk-n8SJDm_fie5lFNdH0FEELXKRuaSxuHs2_YdNzf3lYuzSRcDJ1Ho4ci543vr/exec';
+            e.preventDefault();
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbw9h5Sk-n8SJDm_fie5lFNdH0FEELXKRuaSxuHs2_YdNzf3lYuzSRcDJ1Ho4ci543vr/exec'; // ⚠️ IMPORTANT
             const formData = new FormData(form);
 
-            // Disable button and show submitting text
             submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
+            submitButton.textContent = 'Sending...';
             statusMessage.textContent = '';
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => response.json())
                 .then(data => {
                     if (data.result === 'success') {
-                        statusMessage.textContent = '✅ Thank you! Your submission was successful. I will be in touch shortly.';
+                        statusMessage.textContent = '✅ Thank you! I will be in touch shortly.';
                         statusMessage.className = 'mt-4 text-center text-sm font-medium text-green-600';
-                        form.reset(); // Clear the form fields
-                    } else {
-                        throw new Error(data.error || 'An unknown error occurred.');
-                    }
+                        form.reset();
+                    } else { throw new Error(data.error); }
                 })
                 .catch(error => {
                     statusMessage.textContent = '❌ Error! Something went wrong. Please try again.';
                     statusMessage.className = 'mt-4 text-center text-sm font-medium text-red-600';
-                    console.error('Error!', error.message);
                 })
                 .finally(() => {
-                    // Re-enable the button after 2 seconds
                     setTimeout(() => {
                         submitButton.disabled = false;
-                        submitButton.textContent = 'Submit Project Inquiry';
+                        submitButton.textContent = 'Send Project Details';
                     }, 2000);
                 });
         });
